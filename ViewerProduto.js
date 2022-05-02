@@ -29,8 +29,8 @@ export default class ViewerProduto {
     this.btCancelar  = this.obterElemento('btCancelar');
 
     this.comercial   = this.obterElemento('comercial');
-    this.cientifico  = this.obterElemento('cientifico');
-    this.laboratorio = this.obterElemento('laboratorio');
+    this.marca       = this.obterElemento('marca');
+    this.codigo = this.obterElemento('codigo');
     this.quantidade  = this.obterElemento('quantidade');
     this.seletor     = this.obterElemento('seletor');
       
@@ -74,14 +74,14 @@ export default class ViewerProduto {
 
     if(produto == null) {
       this.comercial.value    = "";
-      this.cientifico.value   = "";
+      this.marca.value   = "";
       this.laboratorio.value  = "";
       this.quantidade.value   = "";
       this.seletor.value      = "";
       this.divAviso.innerHTML = " Pedidos de Remedios: 0";
     } else {
       this.comercial.value    = produto.getcomercial();
-      this.cientifico.value   = produto.getcientifico();
+      this.marca.value   = produto.getmarca();
       this.laboratorio.value  = produto.getlaboratorio();
       this.quantidade.value   = produto.getquantidade();
       this.seletor.value      = produto.getseletor();
@@ -106,7 +106,7 @@ export default class ViewerProduto {
     this.divDialogo.hidden = false; 
     
     if(operacao != Status.EXCLUINDO) {
-      this.cientifico.disabled = false;
+      this.marca.disabled = false;
       this.laboratorio.disabled = false;
       this.quantidade.disabled = false;
       this.seletor.disabled = false;
@@ -117,7 +117,7 @@ export default class ViewerProduto {
     if(operacao == Status.INCLUINDO) {
       this.comercial.disabled = false;
       this.comercial.value = "";
-      this.cientifico.value = "";
+      this.marca.value = "";
       this.laboratorio.value = "";
       this.quantidade.value = "";
       this.seletor.value = "";
@@ -127,12 +127,12 @@ export default class ViewerProduto {
 //------------------------------------------------------------------------//
   
   statusApresentacao() { 
-    this.cientifico.disabled = true;
+    this.marca.disabled = true;
     this.divNavegar.hidden = false;
     this.divComandos.hidden = false;
     this.divDialogo.hidden = true; 
     this.comercial.disabled = true;
-    this.cientifico.disabled = true;
+    this.marca.disabled = true;
     this.laboratorio.disabled = true;
     this.quantidade.disabled = true;
     this.seletor.disabled = true;
@@ -212,14 +212,14 @@ function fnBtSair() {
 
 function fnBtOk() {
   const comercial = this.viewer.comercial.value;
-  const cientifico = this.viewer.cientifico.value;
-  const laboratorio = this.viewer.laboratorio.value;
+  const marca = this.viewer.marca.value;
+  const codigo = this.viewer.laboratorio.value;
   const quantidade = this.viewer.quantidade.value;
   const seletor = this.viewer.seletor.value;
     
   // Como defini que o método "efetivar" é um dos métodos incluir, excluir ou alterar
   // não estou precisando colocar os ninhos de IF abaixo.
-  this.viewer.getCtrl().efetivar(comercial, cientifico, laboratorio, quantidade, seletor); 
+  this.viewer.getCtrl().efetivar(comercial, marca, codigo, quantidade, seletor); 
 
 
 }

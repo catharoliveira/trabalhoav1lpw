@@ -7,17 +7,17 @@ export default class Produto {
   // indica que ele é privado. Também deve-se colocar a presença dele destacada, como está abaixo.
   //
   #comercial;
-  #cientifico;
-  #laboratorio;
+  #marca;
+  #codigo;
   #quantidade;
   #seletor;
 
   //-----------------------------------------------------------------------------------------//
 
-  constructor(comercial, cientifico, laboratorio, quantidade, seletor) {
+  constructor(comercial, marca, codigo, quantidade, seletor) {
     this.setcomercial(comercial);
-    this.setcientifico(cientifico);
-    this.setlaboratorio(laboratorio);
+    this.setmarca(marca);
+    this.setcodigo(codigo);
     this.setquantidade(quantidade);
     this.setseletor(seletor);      
   }
@@ -38,30 +38,30 @@ export default class Produto {
   
   //-----------------------------------------------------------------------------------------//
 
-  getcientifico() {
-    return this.#cientifico;
+  getmarca() {
+    return this.#marca;
   }
   
   //-----------------------------------------------------------------------------------------//
 
-  setcientifico(cientifico) {
-    if(!Produto.validarcientifico(cientifico))
-      throw new ModelError("Nome Cientifico Inválido: " + cientifico);
-    this.#cientifico = cientifico;
+  setmarca(marca) {
+    if(!Produto.validarmarca(marca))
+      throw new ModelError("Nome Cientifico Inválido: " + marca);
+    this.#marca = marca;
   }
   
   //-----------------------------------------------------------------------------------------//
 
-  getlaboratorio() {
-    return this.#laboratorio;
+  getcodigo() {
+    return this.#codigo;
   }
   
   //-----------------------------------------------------------------------------------------//
 
-  setlaboratorio(laboratorio) {
-    if(!Produto.validarlaboratorio(laboratorio))
-      throw new ModelError("Laboratorio Inválido: " + laboratorio);
-    this.#laboratorio = laboratorio;
+  setcodigo(codigo) {
+    if(!Produto.validarcodigo(codigo))
+      throw new ModelError("Laboratorio Inválido: " + codigo);
+    this.#codigo = codigo;
   }
   
   //-----------------------------------------------------------------------------------------//
@@ -97,8 +97,8 @@ export default class Produto {
   toJSON() {
     return '{' +
                '"comercial" : "'   + this.#comercial   + '",' +
-               '"cientifico" : "'  + this.#cientifico  + '",' +
-               '"laboratorio" : "' + this.#laboratorio + '",' +
+               '"marca" : "'       + this.#marca  + '",' +
+               '"codigo" : "' + this.#codigo + '",' +
                '"quantidade" : "'  + this.#quantidade  + '",' +
                '"seletor" : "'     + this.#seletor     + '" ' + 
            '}';  
@@ -107,7 +107,7 @@ export default class Produto {
   //-----------------------------------------------------------------------------------------//
 
   static assign(obj) {
-    return new Produto(obj.comercial, obj.cientifico, obj.laboratorio, obj.quantidade, obj.seletor);
+    return new Produto(obj.comercial, obj.marca, obj.codigo, obj.quantidade, obj.seletor);
   }
 
   //-----------------------------------------------------------------------------------------//
@@ -131,12 +131,12 @@ export default class Produto {
 
   //-----------------------------------------------------------------------------------------//
 
-  static validarcientifico(cientifico) {
-    if(cientifico == null || cientifico == "" || cientifico == undefined)
+  static validarmarca(marca) {
+    if(marca == null || marca == "" || marca == undefined)
       return false;
     
-    const padraocientifico = /[A-Za-z]{1,40}/;
-    if (!padraocientifico.test(cientifico)) 
+    const padraomarca = /[A-Za-z]{1,40}/;
+    if (!padraomarca.test(marca)) 
       return false;
     
     return true;
@@ -145,12 +145,12 @@ export default class Produto {
 
   //-----------------------------------------------------------------------------------------//
 
-  static validarlaboratorio(laboratorio) {
-    if(laboratorio == null || laboratorio == "" || laboratorio == undefined)
+  static validarcodigo(codigo) {
+    if(codigo == null || codigo == "" || codigo == undefined)
       return false;
     
-    const padraolaboratorio = /[A-Za-z]{1,40}/;
-    if (!padraolaboratorio.test(laboratorio)) 
+    const padraocodigo = /[A-Za-z]{1,40}/;
+    if (!padraocodigo.test(codigo)) 
       return false;
     
     return true;
@@ -178,7 +178,7 @@ export default class Produto {
    
   mostrar() {
     let texto = "comercial: " + this.#comercial + "\n";
-    texto += "cientifico: "   + this.#cientifico + "\n";
+    texto += "marca: "   + this.#marca + "\n";
       
     alert(texto);
     alert(JSON.stringify(this));
