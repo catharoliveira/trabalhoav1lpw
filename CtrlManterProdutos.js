@@ -125,10 +125,10 @@ export default class CtrlManterProdutos {
 
   //-----------------------------------------------------------------------------------------//
  
-  async incluir(comercial, cientifico, laboratorio, quantidade, seletor) {
+  async incluir(comercial, marca, codigo, quantidade, seletor) {
     if(this.#status == Status.INCLUINDO) {
       try {
-        let produto= new Produto(comercial, cientifico, laboratorio, quantidade, seletor);
+        let produto= new Produto(comercial, marca, codigo, quantidade, seletor);
         await this.#dao.incluir(produto); 
         this.#status = Status.NAVEGANDO;
         this.#atualizarContextoNavegacao();
@@ -141,15 +141,15 @@ export default class CtrlManterProdutos {
 
   //-----------------------------------------------------------------------------------------//
  
-  async alterar(comercial, cientifico, laboratorio, quantidade, seletor) {
+  async alterar(comercial, marca, codigo, quantidade, seletor) {
     if(this.#status == Status.ALTERANDO) {
       try {
         let produto = await this.#dao.obterProdutoPeloComercial(comercial); 
         if(produto == null) {
-          alert("Remedio " + comercial + " não encontrado.");
+          alert("Produto " + comercial + " não encontrado.");
         } else {
-          produto.setcientifico(cientifico);
-          produto.setlaboratorio(laboratorio);
+          produto.setmarca(marca);
+          produto.setcodigo(codigo);
           produto.setquantidade(quantidade);
           produto.setseletor(seletor);
           await this.#dao.alterar(produto); 
