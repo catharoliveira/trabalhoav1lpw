@@ -146,7 +146,7 @@ export default class CtrlManterProdutos {
       try {
         let produto = await this.#dao.obterProdutoPeloComercial(comercial); 
         if(produto == null) {
-          alert("Remedio " + comercial + " não encontrado.");
+          alert("Produto " + comercial + " não encontrado.");
         } else {
           produto.setmarca(marca);
           produto.setcodigo(codigo);

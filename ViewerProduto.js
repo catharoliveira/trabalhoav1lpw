@@ -75,17 +75,17 @@ export default class ViewerProduto {
     if(produto == null) {
       this.comercial.value    = "";
       this.marca.value   = "";
-      this.laboratorio.value  = "";
+      this.codigo.value  = "";
       this.quantidade.value   = "";
       this.seletor.value      = "";
-      this.divAviso.innerHTML = " Pedidos de Remedios: 0";
+      this.divAviso.innerHTML = " Produtos: 0";
     } else {
       this.comercial.value    = produto.getcomercial();
       this.marca.value   = produto.getmarca();
-      this.laboratorio.value  = produto.getlaboratorio();
+      this.codigo.value  = produto.getcodigo();
       this.quantidade.value   = produto.getquantidade();
       this.seletor.value      = produto.getseletor();
-      this.divAviso.innerHTML = "Posição: " + pos + " | pedidos de Remedios: " + qtde;
+      this.divAviso.innerHTML = "Posição: " + pos + " | pedidos: " + qtde;
     }
   }
 
@@ -107,7 +107,7 @@ export default class ViewerProduto {
     
     if(operacao != Status.EXCLUINDO) {
       this.marca.disabled = false;
-      this.laboratorio.disabled = false;
+      this.codigo.disabled = false;
       this.quantidade.disabled = false;
       this.seletor.disabled = false;
       this.divAviso.innerHTML = "";      
@@ -118,7 +118,7 @@ export default class ViewerProduto {
       this.comercial.disabled = false;
       this.comercial.value = "";
       this.marca.value = "";
-      this.laboratorio.value = "";
+      this.codigo.value = "";
       this.quantidade.value = "";
       this.seletor.value = "";
     }
@@ -133,7 +133,7 @@ export default class ViewerProduto {
     this.divDialogo.hidden = true; 
     this.comercial.disabled = true;
     this.marca.disabled = true;
-    this.laboratorio.disabled = true;
+    this.codigo.disabled = true;
     this.quantidade.disabled = true;
     this.seletor.disabled = true;
   }
@@ -213,7 +213,7 @@ function fnBtSair() {
 function fnBtOk() {
   const comercial = this.viewer.comercial.value;
   const marca = this.viewer.marca.value;
-  const codigo = this.viewer.laboratorio.value;
+  const codigo = this.viewer.codigo.value;
   const quantidade = this.viewer.quantidade.value;
   const seletor = this.viewer.seletor.value;
     

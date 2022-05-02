@@ -32,7 +32,7 @@ export default class Produto {
 
   setcomercial(comercial) {
     if(!Produto.validarcomercial(comercial))
-      throw new ModelError("Nome Comercial Inválido: " + comercial);
+      throw new ModelError("Produto Inválido: " + comercial);
     this.#comercial = comercial;
   }
   
@@ -46,7 +46,7 @@ export default class Produto {
 
   setmarca(marca) {
     if(!Produto.validarmarca(marca))
-      throw new ModelError("Nome Cientifico Inválido: " + marca);
+      throw new ModelError("Marca do produto inválida: " + marca);
     this.#marca = marca;
   }
   
@@ -60,7 +60,7 @@ export default class Produto {
 
   setcodigo(codigo) {
     if(!Produto.validarcodigo(codigo))
-      throw new ModelError("Laboratorio Inválido: " + codigo);
+      throw new ModelError("Código Inválido: " + codigo);
     this.#codigo = codigo;
   }
   
