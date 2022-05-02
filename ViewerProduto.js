@@ -85,7 +85,7 @@ export default class ViewerProduto {
       this.codigo.value  = produto.getcodigo();
       this.quantidade.value   = produto.getquantidade();
       this.seletor.value      = produto.getseletor();
-      this.divAviso.innerHTML = "Posição: " + pos + " | pedidos: " + qtde;
+      this.divAviso.innerHTML = "Posição: " + pos + " | Produtos: " + qtde;
     }
   }
 
